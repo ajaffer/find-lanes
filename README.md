@@ -1,12 +1,9 @@
 # **Finding Lane Lines on the Road** 
----
-
 [//]: # (Image References)
 
 [image1]: ./test_image_hough_lines/solidWhiteCurve.jpg "HoughLines"
 [image2]: ./test_image_out/solidWhiteCurve.jpg "ExtraPolatedLines"
 
----
 
 ### Pipeline
 The pipeline consists the following steps:
@@ -31,8 +28,9 @@ Hough-Lines can be see in the following image: ![alt text][image1]
 The extrapolated lines look like the following image: ![alt text][image2]  
 
 ### 2. Shortcomings with current pipeline
-* One major short coming in this approach is this pipeline keeps a running average of the lines encountered. This approach is going to make the line react very slowly to fast changing conditions, which can be less than ideal at best and life threatening in worse situations.
-* The extrapolated lines are not aligning properly with the lane lines, this is due to noisy lines. 
+* This implementation of the pipeline keeps a running average of the lines encountered. This approach is going to make the detected line react slowly to any fast changing conditions, which can be less than ideal at best and life threatening in worse situations.
+* The extrapolated lines are not aligning properly with the lane lines, this is due to noisy data. 
+* The pipeline does not execute well in the challenge video, due to lot of noisy data in the region of interest. 
 
 ### 3. Possible improvements to current pipeline
 * Filter out the noise lines, which is causing the extrapolated lane lines to have a different angle than the actual lane lines.
