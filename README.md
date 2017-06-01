@@ -9,7 +9,7 @@
 ---
 
 ### Pipeline
-My pipeline consists the following steps
+The pipeline consists the following steps:
  
 1) Applies the Grayscale transform
 2) Applies a Gaussian Noise kernel
@@ -17,7 +17,6 @@ My pipeline consists the following steps
 4) Draws hough-lines
 
 Hough-Lines can be see in the following image: ![alt text][image1]
-
 
 #### I then modified the draw_lines() function to do these extra steps:
 
@@ -31,13 +30,14 @@ Hough-Lines can be see in the following image: ![alt text][image1]
 
 The extrapolated lines look like the following image: ![alt text][image2]  
 
-### 2. Potential shortcomings with current pipeline
-One major short coming in this approach is this pipeline keeps a running average of the lines encountered. This approach is going to make the line react very slowly to fast changing conditions, which can be less than ideal at best and life threatening in worse situations.
+### 2. Shortcomings with current pipeline
+* One major short coming in this approach is this pipeline keeps a running average of the lines encountered. This approach is going to make the line react very slowly to fast changing conditions, which can be less than ideal at best and life threatening in worse situations.
+* The extrapolated lines are not aligning properly with the lane lines, this is due to noisy lines. 
 
-
-### 3. Suggest possible improvements to your pipeline
-Instead of keeping running average, use a superior numerical analysis techniques.
-Another improvement would be to step away from using a fixed region of interest, but instead rely on the features of road that can help identify the lane lines, e.g., the color of lines.
+### 3. Possible improvements to current pipeline
+* Filter out the noise lines, which is causing the extrapolated lane lines to have a different angle than the actual lane lines.
+* Instead of keeping running average, use a superior numerical analysis techniques.
+* Step away from using a fixed region of interest, but instead rely on the features of road that can help identify the lane lines, e.g., the color of lines.
 
 #### Notes
 The pipeline function has the following signature: `pipeline(image, simple=False)` 
@@ -53,4 +53,3 @@ The following output folders have been included:
 * `test_videos_output` - contains videos with extrapolated lines
 
 The python source is included in the file: `Project1.ipynb`
- 
